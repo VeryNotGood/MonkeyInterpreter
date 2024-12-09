@@ -1,0 +1,88 @@
+package lexer
+
+import (
+	token "github.com/VeryNotGood/monkey/token"
+)
+
+type Lexer struct {
+	input        string
+	position     int
+	readPosition int
+	ch           byte
+}
+
+func New(input string) *Lexer {
+	// create a new Lexer struct and read characters into it
+	l := &Lexer{input: input}
+	l.readChar()
+	return l
+}
+
+func (l *Lexer) readChar() {
+	// if read index/position is the end of the input set to not read/nul
+	if l.readPosition >= len(l.input) {
+		l.ch = 0
+	} else {
+		// else set the read character to read index/position
+		l.ch = l.input[l.readPosition]
+	}
+	// set the new index/position to the read position, increment read index/position to look ahead to next char
+	l.position = l.readPosition
+	l.readPosition += 1
+}
+
+func (l *Lexer) NextToken() token.Token {
+	var tok token.Token
+
+	switch l.ch {
+	case '=':
+		tok = newToken(token.ASSIGN, l.ch)
+	case ';':
+		tok = newToken(token.SEMICOLON, l.ch)
+	case '(':
+		tok = newToken(token.LPAREN, l.ch)
+	case ')':
+		tok = newToken(token.RPAREN, l.ch)
+	case '{':
+		tok = newToken(token.LBRACE, l.ch)
+	case '}':
+		tok = newToken(token.RBRACE, l.ch)
+	case ',':
+		tok = newToken(token.COMMA, l.ch)
+	case '+':
+		tok = newToken(token.PLUS, l.ch)
+	case '-':
+		tok = newToken(token.MINUS, l.ch)
+	case 0:
+		tok.Literal = ""
+		tok.Type = token.EOF
+	default:
+		if isLetter(l.ch) {
+			tok.Literal = l.readIdentifier()
+			tok.Type = token.LookupIdent(tok.Literal)
+			return tok
+		} else {
+			tok = newToken(token.ILLEGAL, l.ch)
+		}
+	}
+
+	l.readChar()
+	return tok
+}
+
+func (l *Lexer) readIdentifier() string {
+	position := l.position
+	for isLetter(l.ch) {
+		l.readChar()
+	}
+	return l.input[position:l.position]
+}
+
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
+}
+
+func newToken(tokenType token.TokenType, ch byte) token.Token {
+	//creates new token from the type and the char byte from the jexer
+	return token.Token{Type: tokenType, Literal: string(ch)}
+}
