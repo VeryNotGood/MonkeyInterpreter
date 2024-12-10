@@ -114,6 +114,18 @@ return false;
 		{token.SEMICOLON, ";"},
 		{token.RBRACE, "}"},
 		{token.EOF, ""},
+
+		// 10 == 10;
+		{token.INT, "10"},
+		{token.EQ, "10"},
+		{token.INT, "10"},
+		{token.SEMICOLON, ";"},
+
+		// 10 != 9;
+		{token.INT, "10"},
+		{token.NEQ, "10"},
+		{token.INT, "9"},
+		{token.SEMICOLON, ";"},
 	}
 
 	l := New(input)
