@@ -19,6 +19,9 @@ const (
 	LT = "<"
 	GT = ">"
 
+	EQ  = "=="
+	NEQ = "!="
+
 	//Delimiters
 	COMMA     = ","
 	SEMICOLON = ";"
@@ -35,7 +38,7 @@ const (
 	FALSE    = "false"
 	IF       = "if"
 	ELSE     = "else"
-	RETURN     = "return"
+	RETURN   = "return"
 )
 
 type TokenType string
@@ -46,12 +49,12 @@ type Token struct {
 }
 
 var keywords = map[string]TokenType{
-	"fn":      FUNCTION,
-	"let":     LET,
-	"true":    TRUE,
-	"false":   FALSE,
-	"if":      IF,
-	"else":    ELSE,
+	"fn":     FUNCTION,
+	"let":    LET,
+	"true":   TRUE,
+	"false":  FALSE,
+	"if":     IF,
+	"else":   ELSE,
 	"return": RETURN,
 }
 
