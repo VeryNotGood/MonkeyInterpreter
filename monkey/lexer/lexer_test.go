@@ -90,7 +90,6 @@ return false;
 		{token.GT, ">"},
 		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
-		{token.EOF, ""},
 
 		// if (5 < 10) {
 		// return true;
