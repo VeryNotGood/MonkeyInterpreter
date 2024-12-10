@@ -9,9 +9,15 @@ const (
 	INT   = "INT"
 
 	//Operators
-	ASSIGN = "="
-	PLUS   = "+"
-	MINUS  = "-"
+	ASSIGN     = "="
+	PLUS        = "+"
+	MINUS       = "-"
+	SLASH       = "/"
+	BANG        = "!"
+	ASTERISK = "*"
+
+	LT = "<"
+	GT = ">"
 
 	//Delimiters
 	COMMA     = ","
