@@ -8,7 +8,7 @@ import (
 	"github.com/VeryNotGood/monkey/lexer"
 )
 
-func replStart(in io.Reader, out io.Writer) {
+func ReplStart(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
 
 	for {
@@ -23,7 +23,7 @@ func replStart(in io.Reader, out io.Writer) {
 		l := lexer.New(line)
 
 		for tok := l.NextToken(); tok.Type != "EOF"; tok = l.NextToken() {
-			fmt.Fprintf(out, "%v\n", tok)
+			fmt.Fprintf(out, "%+v\n", tok)
 		}
 	}
 }
