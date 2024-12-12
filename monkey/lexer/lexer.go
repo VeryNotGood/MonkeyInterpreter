@@ -1,8 +1,6 @@
 package lexer
 
-import (
-	token "github.com/VeryNotGood/monkey/token"
-)
+import "monkey/token"
 
 type Lexer struct {
 	input        string
@@ -48,13 +46,13 @@ func (l *Lexer) NextToken() token.Token {
 
 	switch l.ch {
 	case '=':
-	if l.peekChar() == '=' {
+		if l.peekChar() == '=' {
 			ch := l.ch
 			l.readChar()
 			literal := string(ch) + string(l.ch)
 			tok = token.Token{Type: token.EQ, Literal: literal}
 		} else {
-				tok = newToken(token.ASSIGN, l.ch)
+			tok = newToken(token.ASSIGN, l.ch)
 		}
 	case ';':
 		tok = newToken(token.SEMICOLON, l.ch)

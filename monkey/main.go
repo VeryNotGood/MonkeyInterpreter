@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
+	"monkey/repl"
 	"os"
 	"os/user"
-
-	"github.com/VeryNotGood/monkey/repl"
 )
 
 func main() {

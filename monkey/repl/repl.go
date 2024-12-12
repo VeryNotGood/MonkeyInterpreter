@@ -4,8 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-
-	"github.com/VeryNotGood/monkey/lexer"
+	"monkey/lexer"
 )
 
 func ReplStart(in io.Reader, out io.Writer) {

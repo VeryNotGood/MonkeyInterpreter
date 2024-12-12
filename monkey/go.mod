@@ -1,3 +1,3 @@
-module github.com/VeryNotGood/monkey
+module monkey
 
 go 1.23.3

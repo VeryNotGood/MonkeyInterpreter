@@ -2,9 +2,8 @@ package lexer
 
 import (
 	"fmt"
+	"monkey/token"
 	"testing"
-
-	token "github.com/VeryNotGood/monkey/token"
 )
 
 func TestNextToken(t *testing.T) {
