@@ -139,6 +139,6 @@ func isLetter(ch byte) bool {
 }
 
 func newToken(tokenType token.TokenType, ch byte) token.Token {
-	//creates new token from the type and the char byte from the jexer
+	// creates new token from the type and the char byte from the lexer
 	return token.Token{Type: tokenType, Literal: string(ch)}
 }
